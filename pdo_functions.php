@@ -1,5 +1,4 @@
 <?php
-include "../common/pdo_connection.php";
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -52,7 +51,7 @@ function update_line($table, $data, $search)
 */
 function go_pdo($sql)
 {
-    global $pdo;
+    include "../common/pdo_connection.php";
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
