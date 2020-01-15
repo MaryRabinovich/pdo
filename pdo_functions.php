@@ -95,8 +95,9 @@ function resize_input($array)
 {
     foreach($array as $key => $value) 
     {
-        $array[$key] = htmlspecialchars($value, ENT_QUOTES);
-        $array[$key] = iconv("utf-8", "cp1251", $value);
+        $array[$key] = htmlspecialchars($array[$key], ENT_QUOTES);
+        $array[$key] = filter_var($array[$key], FILTER_SANITIZE_STRING);
+        $array[$key] = iconv("utf-8", "cp1251", $array[$key]);
     }
     return $array;
 }
